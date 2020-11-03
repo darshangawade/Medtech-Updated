@@ -18,7 +18,7 @@
 	 $name_card=$_POST['name_card'];
 	 $card_no=$_POST['card_no'];
 	 $exp_date=$_POST['exp_date'];
-	 $cvv=$_POST['cvv'];
+	 $cvv=hash ( 'sha256' , $_POST['cvv']   ) ;
 	 $amount=$_POST['amount'];
 	 
 	 $query=mysqli_query($conn,"insert into payment (app_id,name_card,card_no,exp_date,cvv,amount,pay_date,pay_status)values('$app_id','$name_card','$card_no','$exp_date','$cvv','$amount',CURDATE(),'0')");
@@ -55,7 +55,7 @@
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] ,.form-container input[type=date] ,.form-container input[type=time] {
+.form-container input[type=text], .form-container input[type=password] ,.form-container input[type=date] ,.form-container input[type=time],.form-container input[type=month] {
   width: 65%;
   padding: 5px;
   margin: 5px 0 ;
@@ -67,7 +67,7 @@
 }
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus ,.form-container input[type=date] ,.form-container input[type=time] ,{
+.form-container input[type=text]:focus, .form-container input[type=password]:focus ,.form-container input[type=date] ,.form-container input[type=time] ,.form-container input[type=month]{
   background-color: #ddd;
   outline: none;
 }
@@ -177,7 +177,7 @@ label{
 	<input type="text" placeholder="---- ----  ---- ----" name="card_no" required><br>
 
     <label>Month and Year of Expiry</label><br>
-	<input type="date"   name="exp_date" required><br>
+	<input type="month"   name="exp_date" required><br>
 
 	<label> CVV</label><br>
 	<input type="text"  placeholder="- - -" name="cvv" required>  <br>
@@ -193,3 +193,4 @@ label{
    </div> 
 </body>
 </html>
+
