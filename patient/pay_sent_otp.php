@@ -166,8 +166,9 @@ if(isset($_POST['submit'])) {
         }else{
            
             echo "<script>alert('Invalid Verification Code!, Please try again.')</script>";
-            echo "<script>window.location = 'pat_appointment.php'</script>";
+            echo "<script>window.location = 'pay_sent_otp.php'</script>";
         }
 }
     
 ?>
+
