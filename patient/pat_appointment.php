@@ -117,11 +117,14 @@
 					echo $pay_status;?>
 			  
 			  <td>
-				<?php if ($pay_status=="") { ?>	
+				<?php if($row['app_status']=="Accepted") {  if ($pay_status=="") { ?>	
 					<span style="color:black"><a href="payment.php?app_id=<?php echo $row['app_id'] ?>" > <button type="button" style="background-color: #4CAF50;font-size:19px;border-radius:20px;"><i class="fa fa-rupee"></i> Payment </button>  </a> </span></td>
 				<?php } else if ($pay_status=="1") { ?>
 					<div style="color:green" >Paid <i class="fa fa-check" style="font-size:20px;"></i></div>
-				<?php } ?>
+				<?php } }  else {  $app_msg_null='Still your appointment is not accepted, cannot proceed with the payment ';?>
+					<div style="color:green" class="tooltip">null    <span class="tooltiptext"><?php echo $app_msg_null; ?></span></div>
+				<?php }?>
+				
 		  </tr>
           <?php  } ?>
          
